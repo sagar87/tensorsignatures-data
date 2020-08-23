@@ -1,0 +1,7 @@
+*.vcf
+*.gz.vcf
+*.h5
+genome.fa.gz
+genome.fa.gz.fai
+genome.fa.gz.gzi
+constants.RData

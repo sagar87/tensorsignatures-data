@@ -1,0 +1,4 @@
+*.vcf
+*.gz.vcf
+*.h5
+.gitignore
