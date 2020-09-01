@@ -8,11 +8,11 @@ genomePath <- "/usr/src/app/genome.fa.gz" # path to the reference genome
 
 # load functions and ranges please adjust!
 # test if there is at least one argument: if not, return an error
-if (length(args)==0) {
-  stop("At least one argument must be supplied (input file).", call.=FALSE)
+if (length(args)<2) {
+  stop("At least one VCF file and output file must be specified.", call.=FALSE)
 }
 
-outputPath <- args[length(args)] # where the output tensor is saved to
+outputPath <- file.path("mount", args[length(args)]) # where the output tensor is saved to
 
 readVcfSave <- function(path) {
     vcf <- readVcf(path)
@@ -54,7 +54,7 @@ df2vcf <- function(df) {
 }
 
 print("Loading vcf(s) ...")
-vcf <- lapply(args[1:length(args)-1], readVcfSave)
+vcf <- lapply(lapply(args[1:length(args)-1], function(x) file.path("mount", x)), readVcfSave)
 
 print("Processing ...")
 snvTensor <- sapply(vcf, function(x) processVcf(x[isSNV(x)]), simplify="array")

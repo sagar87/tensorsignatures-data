@@ -15,5 +15,5 @@ $ docker pull sagar87/tensorsignatures-data:latest
 To use the image switch into the folder containing your VCF data. Then run image using the following command and supply the VCF files as arguments as well as the name of the output file (must be the last argument) as arguments.
 
 ```
-docker run -v $PWD:/usr/src/app sagar87/tensorsignatures-data <vcf1.vcf> <vcf2.vcf> ... <vcfn.vcf> <output.h5>
+docker run -v $PWD:/usr/src/app/mount sagar87/tensorsignatures-data <vcf1.vcf> <vcf2.vcf> ... <vcfn.vcf> <output.h5>
 ```
